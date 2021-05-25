@@ -29,13 +29,13 @@ namespace BusinessLogic
             get => CourseName;
             set
             {
-                if(value == string.Empty)
+                if (!string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException();
+                    courseName = value;
                 }
                 else
                 {
-                    courseName = value;
+                    throw new ArgumentNullException();
                 };
             }
         }
@@ -48,7 +48,7 @@ namespace BusinessLogic
             get => numberOfCredits;
             set
             {
-                if (value <= 30 && value > 0)
+                if (value < 30 && value > 0)
                 {
                     numberOfCredits = value;
                 }
